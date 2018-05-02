@@ -6,12 +6,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/demo")
+@Path("/")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public class DemoResource {
+public class DefaultResource {
     @GET
     public String defaultDemoGet(){
-        return "Demo Resource default Get";
+        return "Welcome to A App";
     }
 }

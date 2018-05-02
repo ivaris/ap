@@ -6,12 +6,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/demo")
+@Path("/airportfrequency")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public class DemoResource {
+public class AirportFrequencyResource {
     @GET
-    public String defaultDemoGet(){
-        return "Demo Resource default Get";
+    public String defaultAirportFrequencyGet(){
+        return "Airport Frequency Resource default Get";
     }
 }
