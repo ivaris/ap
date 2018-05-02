@@ -59,5 +59,10 @@
       <artifactId>mongo-java-driver</artifactId>
       <version>RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>bson</artifactId>
+      <version>RELEASE</version>
+    </dependency>
   </dependencies>
 </project>

@@ -2,13 +2,17 @@ package com.ivar.enterprise.ap.service;
 
 import com.ivar.enterprise.ap.db.MongoDbDriver;
 import com.ivar.enterprise.ap.domain.Country;
+import com.ivar.enterprise.ap.domain.CountryCodec;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
