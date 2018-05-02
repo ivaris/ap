@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ap.iml" filepath="$PROJECT_DIR$/ap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ap-service/ap-service.iml" filepath="$PROJECT_DIR$/ap-service/ap-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ap-web/ap-web.iml" filepath="$PROJECT_DIR$/ap-web/ap-web.iml" />
+    </modules>
+  </component>
+</project>
