@@ -8,20 +8,11 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 public class Country {
-    private Object _id;
     private long id;
     private String code;
     private String name;
     private String continent;
     private String wikipediaLink;
-
-    public Object get_id() {
-        return _id;
-    }
-
-    public void set_id(Object _id) {
-        this._id = _id;
-    }
 
     public long getId() {
         return id;

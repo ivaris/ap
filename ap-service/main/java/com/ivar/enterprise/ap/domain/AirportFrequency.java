@@ -1,7 +1,6 @@
 package com.ivar.enterprise.ap.domain;
 
 public class AirportFrequency {
-    private Object _id;
     private long id;
     private String airportRef;
     private String airportIdent;
@@ -9,15 +8,7 @@ public class AirportFrequency {
     private String description;
     private Double frequency;
 
-    public Object get_id() {
-        return _id;
-    }
-
-    public void set_id(Object _id) {
-        this._id = _id;
-    }
-
-    public long getId() {
+   public long getId() {
         return id;
     }
 
