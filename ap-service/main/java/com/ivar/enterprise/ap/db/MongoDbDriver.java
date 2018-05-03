@@ -1,15 +1,11 @@
 package com.ivar.enterprise.ap.db;
 
-import com.ivar.enterprise.ap.domain.CountryCodec;
-import com.ivar.enterprise.ap.domain.CountryCodecProvider;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import org.bson.codecs.configuration.CodecRegistries;
-import org.bson.codecs.configuration.CodecRegistry;
 
 public class MongoDbDriver {
     public static MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017");
@@ -28,10 +24,10 @@ public class MongoDbDriver {
     }
 
     public static MongoClientOptions getMongoDbOptions(){
-        CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
-                CodecRegistries.fromCodecs(CodecRegistries.fromProviders(new CountryCodecProvider()).get(CountryCodec.class)), MongoClient.getDefaultCodecRegistry());
-        MongoClientOptions options = MongoClientOptions.builder()
-                .codecRegistry(codecRegistry).build();
+        //CustomCodec<Country> countryCodec = new CustomCodec(Country.class);
+        //CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(),
+          //      CodecRegistries.fromCodecs(countryCodec));
+        MongoClientOptions options = MongoClientOptions.builder().build();
         return options;
     }
 }

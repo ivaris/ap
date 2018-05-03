@@ -1,8 +1,8 @@
 package com.ivar.enterprise.ap.resource;
 
 import com.ivar.enterprise.ap.domain.Country;
-import com.ivar.enterprise.ap.service.CountryService;
-import com.ivar.enterprise.ap.service.CountryServiceMongoDbImpl;
+import com.ivar.enterprise.ap.service.EntityService;
+import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,7 +14,7 @@ import java.util.List;
 @Produces({ MediaType.APPLICATION_JSON })
 
 public class CountryResource {
-    private CountryService service = new CountryServiceMongoDbImpl();
+    private EntityService<Country> service = new EntityServiceMongoDbImpl<>(Country.class,"country");
     @GET
     public String defaultCountryGet(){
         return "Country Resource default Get";
@@ -23,24 +23,24 @@ public class CountryResource {
     @GET
     @Path("/all")
     public List<Country> getAllCountries(){
-        return service.getCountries();
+        return service.getEntites();
     }
 
     @GET
     @Path("/code/{code}")
     public Country getCountryByCode(@PathParam("code") String code){
-        return service.getCountryByCode(code);
+        return service.getEntityByCode(code);
     }
 
     @GET
     @Path("/id/{id}")
     public Country getCountryById(@PathParam("id") long id){
-        return service.getCountryById(id);
+        return service.getEntityById(id);
     }
 
     @GET
     @Path("/name/{name}")
     public Country getCountryByName(@PathParam("name") String name){
-        return service.getCountryByName(name);
+        return service.getEntityByName(name);
     }
 }

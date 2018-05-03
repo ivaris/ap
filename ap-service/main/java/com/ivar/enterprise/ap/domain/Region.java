@@ -1,18 +1,39 @@
 package com.ivar.enterprise.ap.domain;
 
-import org.bson.BsonDocument;
-import org.bson.BsonDocumentWrapper;
-import org.bson.Document;
-import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
-
-public class Country {
+public class Region {
     private Object _id;
     private long id;
     private String code;
+    private String localCode;
     private String name;
     private String continent;
+    private String isoCountry;
+    private String keywords;
+
+    public String getLocalCode() {
+        return localCode;
+    }
+
+    public void setLocalCode(String localCode) {
+        this.localCode = localCode;
+    }
+
+    public String getIsoCountry() {
+        return isoCountry;
+    }
+
+    public void setIsoCountry(String isoCountry) {
+        this.isoCountry = isoCountry;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
     private String wikipediaLink;
 
     public Object get_id() {
