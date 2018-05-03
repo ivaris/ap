@@ -2,6 +2,7 @@ package com.ivar.enterprise.ap.service;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivar.enterprise.ap.db.MongoDbDriver;
 import com.mongodb.client.FindIterable;
@@ -59,7 +60,7 @@ public class EntityServiceMongoDbImpl<T extends Object> implements EntityService
     public T parseObject(String json){
         try {
             JsonParser jsonParser = new JsonFactory().createParser(json);
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
             T entity = mapper.readValue(jsonParser, this._clazz);
             return entity;
         }catch (IOException ioExp){

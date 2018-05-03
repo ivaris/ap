@@ -1,7 +1,6 @@
 package com.ivar.enterprise.ap.domain;
 
 public class Region {
-    private Object _id;
     private long id;
     private String code;
     private String localCode;
@@ -35,14 +34,6 @@ public class Region {
     }
 
     private String wikipediaLink;
-
-    public Object get_id() {
-        return _id;
-    }
-
-    public void set_id(Object _id) {
-        this._id = _id;
-    }
 
     public long getId() {
         return id;

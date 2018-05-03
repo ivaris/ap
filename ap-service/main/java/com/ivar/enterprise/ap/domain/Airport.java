@@ -1,7 +1,6 @@
 package com.ivar.enterprise.ap.domain;
 
 public class Airport {
-    private Object _id;
     private long id;
     private String ident;
     private String type;
@@ -21,15 +20,7 @@ public class Airport {
     private String wikipediaLink;
     private String keywords;
 
-    public Object get_id() {
-        return _id;
-    }
-
-    public void set_id(Object _id) {
-        this._id = _id;
-    }
-
-    public long getId() {
+       public long getId() {
         return id;
     }
 
