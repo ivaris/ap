@@ -5,7 +5,9 @@ import com.ivar.enterprise.ap.service.EntityService;
 import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +24,12 @@ public class CountryResource {
 
     @GET
     @Path("/all")
-    public List<Country> getAllCountries(){
-        return service.getEntites();
+    public Response getAllCountries(){
+        List<Country> result = service.getEntites();
+        return Response.ok().entity(new GenericEntity<List<Country>>(result){})
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS, HEAD")
+                .build();
     }
 
     @GET

@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Lookup Airports: </h2>
+<ul>
+  <li>
+    <div>
+      <h4>By Country: <select [(ngModel)]="sourceCountry">
+        <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}
+        </option>
+      </select> <button (click)="onClickSearch('country')">Search</button></h4>
+    </div>
+  </li>
+  <li>
+    <div>
+      <h4>By Region: <input [(ngModel)]='region'> <button (click)="onClickSearch('region')">Search</button></h4>
+    </div>
+  </li>
+  <li>
+    <div>
+      <h4>Custom Search: <button (click)="onClickSearch('custom')">Search</button></h4>
+    </div>
+  </li>
+</ul>
+

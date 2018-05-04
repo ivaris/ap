@@ -1,5 +1,7 @@
 # ap
 
+Install mogodb and robomongo
+
 Start mongo db
 Windows :
 cd C:\Program Files\MongoDB\Server\3.6\bin>
