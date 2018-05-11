@@ -6,3 +6,4 @@
 /.settings/
 /bin/
 *.iml
+/package-lock.json

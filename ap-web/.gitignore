@@ -45,3 +45,4 @@ Thumbs.db
 
 /target/
 *.iml
+/package-lock.json
