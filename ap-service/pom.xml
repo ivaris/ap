@@ -71,6 +71,7 @@
   <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
+    <version>2.3.2</version>
     <configuration>
       <mainClass>com.ivar.enterprise.ap.ApDriver</mainClass>
     </configuration>
