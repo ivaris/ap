@@ -9,6 +9,7 @@ import { RegionService }  from '../providers/region.service';
   templateUrl: '../views/search.component.html',
   styleUrls: ['../styles/search.component.css'],
   providers: [CountryService, RegionService]
+
 })
 export class SearchComponent {
   title = 'Search Airports';
