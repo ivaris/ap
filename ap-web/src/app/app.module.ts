@@ -7,6 +7,7 @@ import { HttpModule }    from '@angular/http'
 import { MainComponent } from './components/main.component';
 import { SearchComponent} from './components/search.component';
 import { CountryService }  from './providers/country.service';
+import { RegionService }  from './providers/region.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CountryService }  from './providers/country.service';
     RoutingModule
   ],
   providers: [
-  CountryService
+  CountryService,
+  RegionService
   ],
   bootstrap: [MainComponent]
 })
