@@ -7,40 +7,42 @@ import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import java.util.List;
 
 @Path("/airport")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public class AirportResource {
+public class AirportResource<T> extends DefaultResource<T> {
     private EntityService<Airport> service = new EntityServiceMongoDbImpl<>(Airport.class,"airport");
 
     @GET
-    public String defaultAirportGet(){
-        return "Airport Resource default Get";
+    public Response defaultAirportGet(){
+        return getResponse((T)"Airport Resource default Get");
     }
 
     @GET
     @Path("/all")
-    public List<Airport> getAllAirports(){
-        return service.getEntites();
+    public Response getAllAirports(){
+        return getResponse((T)service.getEntites());
     }
 
     @GET
     @Path("/code/{code}")
-    public Airport getAirportByCode(@PathParam("code") String code){
-        return service.getEntityByCode(code);
+    public Response getAirportByCode(@PathParam("code") String code){
+        return getResponse((T)service.getEntityByCode(code));
     }
 
     @GET
     @Path("/id/{id}")
-    public Airport getAirportById(@PathParam("id") long id){
-        return service.getEntityById(id);
+    public Response getAirportById(@PathParam("id") long id){
+        return getResponse((T)service.getEntityById(id));
     }
 
     @GET
     @Path("/name/{name}")
-    public Airport getAirportByName(@PathParam("name") String name){
-        return service.getEntityByName(name);
+    public Response getAirportByName(@PathParam("name") String name){
+        return getResponse((T)service.getEntityByName(name));
     }
 }

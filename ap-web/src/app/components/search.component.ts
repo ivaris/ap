@@ -5,7 +5,7 @@ import { CountryService }  from '../providers/country.service';
 @Component({
   selector: 'search',
   templateUrl: '../views/search.component.html',
-  styleUrls: ['../styles/search.component.css']
+  styleUrls: ['../styles/search.component.css'],
   providers: [CountryService]
 })
 export class SearchComponent {

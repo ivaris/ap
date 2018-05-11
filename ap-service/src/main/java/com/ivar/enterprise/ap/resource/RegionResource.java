@@ -6,25 +6,30 @@ import com.ivar.enterprise.ap.service.EntityService;
 import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import java.util.List;
 
 @Path("/region")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public class RegionResource {
+public class RegionResource<T> extends DefaultResource<T> {
     private EntityService<Region> service = new EntityServiceMongoDbImpl<>(Region.class,"region");
 
     @GET
-    public String defaultRegionGet(){
-        return "Region Resource default Get";
+    public Response defaultRegionGet(){
+        return getResponse((T)"Region Resource default Get");
     }
 
     @GET
     @Path("/all")
-    public List<Region> getAllRegions(){
-        return service.getEntites();
+    public Response getAllRegions(){
+        return getResponse((T)service.getEntites());
     }
+
+	
 
     @GET
     @Path("/code/{code}")

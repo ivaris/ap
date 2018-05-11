@@ -7,41 +7,45 @@ import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.annotation.JSONP.Def;
+
 import java.util.List;
 
 @Path("/airportfrequency")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
-public class AirportFrequencyResource {
+public class AirportFrequencyResource<T> extends DefaultResource<T> {
     private EntityService<AirportFrequency> service = new EntityServiceMongoDbImpl<>(AirportFrequency.class,"airportfrequency");
 
     @GET
-    public String defaultAirportFrequencyGet(){
-        return "Airport Frequency Resource default Get";
+    public Response defaultAirportFrequencyGet(){
+        return getResponse((T)"Airport Frequency Resource default Get");
     }
 
     @GET
     @Path("/all")
-    public List<AirportFrequency> getAllAirportFrequencies(){
-        return service.getEntites();
+    public Response getAllAirportFrequencies(){
+        return getResponse((T)service.getEntites());
     }
 
     @GET
     @Path("/code/{code}")
-    public AirportFrequency getAirportFrequencyByCode(@PathParam("code") String code){
-        return service.getEntityByCode(code);
+    public Response getAirportFrequencyByCode(@PathParam("code") String code){
+        return getResponse((T)service.getEntityByCode(code));
     }
 
     @GET
     @Path("/id/{id}")
-    public AirportFrequency getAirportFrequencyById(@PathParam("id") long id){
-        return service.getEntityById(id);
+    public Response getAirportFrequencyById(@PathParam("id") long id){
+        return getResponse((T)service.getEntityById(id));
     }
 
     @GET
     @Path("/name/{name}")
-    public AirportFrequency getAirportFrequencyByName(@PathParam("name") String name){
-        return service.getEntityByName(name);
+    public Response getAirportFrequencyByName(@PathParam("name") String name){
+        return getResponse((T)service.getEntityByName(name));
     }
 
 }
