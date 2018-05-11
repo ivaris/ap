@@ -10,7 +10,7 @@ import { CountryService }  from './providers/country.service';
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
     SearchComponent
   ],
   imports: [
