@@ -28,6 +28,12 @@ public class RegionResource<T> extends DefaultResource<T> {
     public Response getAllRegions(){
         return getResponse((T)service.getEntites());
     }
+    
+    @GET
+    @Path("/country/{countrycode}")
+    public Response getAllRegionsByCountryCode(@PathParam("countrycode") String countrycode){
+        return getResponse((T)service.getEntitesByCustomFilter("isoCountry",countrycode));
+    }
 
 	
 
