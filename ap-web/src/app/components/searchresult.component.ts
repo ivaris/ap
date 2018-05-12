@@ -10,4 +10,8 @@ import { AirportService }  from '../providers/airport.service';
 
 })
 export class SearchResultComponent {
+    airports: Airport[];
+
+    constructor(private airportService: AirportService) { }
+
 }
