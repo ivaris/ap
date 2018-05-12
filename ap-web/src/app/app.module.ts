@@ -6,13 +6,16 @@ import { HttpModule }    from '@angular/http'
 
 import { MainComponent } from './components/main.component';
 import { SearchComponent} from './components/search.component';
+import { SearchResultComponent} from './components/searchresult.component';
 import { CountryService }  from './providers/country.service';
 import { RegionService }  from './providers/region.service';
+import { AirportService } from './providers/airport.service';
 
 @NgModule({
   declarations: [
     MainComponent,
-    SearchComponent
+    SearchComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { RegionService }  from './providers/region.service';
   ],
   providers: [
   CountryService,
-  RegionService
+  RegionService,
+  AirportService
   ],
   bootstrap: [MainComponent]
 })

@@ -4,10 +4,10 @@ import { AirportService }  from '../providers/airport.service';
 
 @Component({
   selector: 'search-result',
-  templateUrl: '../views/search.view.html',
-  styleUrls: ['../styles/search.style.css'],
+  templateUrl: '../views/searchresult.view.html',
+  styleUrls: ['../styles/searchresult.style.css'],
   providers: [AirportService]
 
 })
-export class SearchComponent {
+export class SearchResultComponent {
 }
