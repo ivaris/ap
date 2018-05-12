@@ -4,11 +4,11 @@
   <li>
     <div>
       <h4>Look up:
-        <select [(ngModel)]="sourceCountry">
-          <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}
+        <select [(ngModel)]="country">
+          <option *ngFor="let country of countries" [ngValue]="country" ng-change="getRegionsByCountry()">{{country.name}}
           </option>
         </select>
-        <select [(ngModel)]="sourceRegion">
+        <select [(ngModel)]="region">
           <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}
           </option>
         </select>

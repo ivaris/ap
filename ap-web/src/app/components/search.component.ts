@@ -13,9 +13,9 @@ import { RegionService }  from '../providers/region.service';
 })
 export class SearchComponent {
   title = 'Search Airports';
-  region = {};
+  region = null;
   regions : Region[];
-  country = {};
+  country = null;
   countries: Country[];
  
   constructor(private countryService: CountryService, private regionService: RegionService) { }
@@ -26,6 +26,10 @@ export class SearchComponent {
 
   getRegions(): void {
     this.regionService.getRegions().then(regions => this.regions = regions);
+  }
+
+  getRegionsByCountry(): void {
+    this.regionService.getRegionsByCountry(this.country).then(regions => this.regions = regions);
   }
 
   ngOnInit(): void {
