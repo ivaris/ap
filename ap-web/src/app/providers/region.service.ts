@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Region } from '../domains/region';
+import { Country } from '../domains/country';
 import { REGIONS } from '../mocks/regions.mock';
 import { Headers, Http } from '@angular/http';
 
@@ -14,6 +15,13 @@ export class RegionService {
                   .then(response => response.json() as Region[])
                   .catch(this.handleError);
   }
+
+  getRegionsByCountry(country:Country): Promise<Region[]> {
+    return this.http.get("http://localhost:8080/ap-service/api/region/"+country.code)
+                   .toPromise()
+                   .then(response => response.json() as Region[])
+                   .catch(this.handleError);
+   }
 
   getRegionsMock(): Promise<Region[]> {
       return Promise.resolve(REGIONS);
