@@ -17,7 +17,7 @@ export class RegionService {
   }
 
   getRegionsByCountry(country:Country): Promise<Region[]> {
-    return this.http.get("http://localhost:8080/ap-service/api/region/"+country.code)
+    return this.http.get("http://localhost:8080/ap-service/api/region/country/"+country.code)
                    .toPromise()
                    .then(response => response.json() as Region[])
                    .catch(this.handleError);

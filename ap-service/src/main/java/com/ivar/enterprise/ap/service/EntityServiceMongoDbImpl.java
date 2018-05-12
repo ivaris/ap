@@ -71,9 +71,9 @@ public class EntityServiceMongoDbImpl<T extends Object> implements EntityService
     }
 
 	@Override
-	public List<T> getEntitesByCustomFilter(String key, Object pair) {
+	public List<T> getEntitesByCustomFilter(String key, Object value) {
 		 List<T> entities = new ArrayList<T>();
-	        MongoCursor<Document> cursor = collection.find(Filters.eq(key, pair)).iterator();
+	        MongoCursor<Document> cursor = collection.find(Filters.eq(key, value)).iterator();
 	        try {
 	            while (cursor.hasNext()) {
 	                entities.add(parseObject(cursor.next().toJson()));
