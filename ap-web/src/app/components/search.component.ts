@@ -6,8 +6,8 @@ import { RegionService }  from '../providers/region.service';
 
 @Component({
   selector: 'search',
-  templateUrl: '../views/search.component.html',
-  styleUrls: ['../styles/search.component.css'],
+  templateUrl: '../views/search.view.html',
+  styleUrls: ['../styles/search.style.css'],
   providers: [CountryService, RegionService]
 
 })
@@ -42,14 +42,8 @@ export class SearchComponent {
     console.log("country selected :"+this.country);
     this.getRegionsByCountry();
   }
-  onClickSearch(value:string){
-    console.log("search click value:"+value+":"+this.country);
-    if(value=='country'){
-
-    }else if(value=='region'){
-
-    }else{
-      console.log("comming soon...");
-    }
+  onClickSearch(){
+    console.log("search clicked values[Country,Region]=["+this.country.name+","+this.region.name);
+    
   }
 }

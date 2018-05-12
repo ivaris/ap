@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'fs-app',
-  templateUrl: '../views/app.component.html',
-  styleUrls: ['../styles/app.component.css']
+  templateUrl: '../views/app.view.html',
+  styleUrls: ['../styles/app.style.css']
 })
 export class AppComponent {
   title = 'app works!';
