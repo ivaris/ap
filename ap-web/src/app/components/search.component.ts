@@ -29,6 +29,7 @@ export class SearchComponent {
   }
 
   getRegionsByCountry(): void {
+    //alert(this.country);
     this.regionService.getRegionsByCountry(this.country).then(regions => this.regions = regions);
   }
 
@@ -36,9 +37,11 @@ export class SearchComponent {
     this.getCountries();
     this.getRegions();
   }
-  /*onSelect(country: Country): void {
-    this.sourceCountry = country;
-  }*/
+  onSelectCountry() {
+    //this.sourceCountry = country;
+    console.log("country selected :"+this.country);
+    this.getRegionsByCountry();
+  }
   onClickSearch(value:string){
     console.log("search click value:"+value+":"+this.country);
     if(value=='country'){
