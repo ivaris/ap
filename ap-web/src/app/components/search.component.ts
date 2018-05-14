@@ -12,7 +12,7 @@ import { RegionService }  from '../providers/region.service';
 
 })
 export class SearchComponent {
-  title = 'Search Airports';
+  title = 'Search';
   region = null;
   regions : Region[];
   country = null;
@@ -35,7 +35,7 @@ export class SearchComponent {
 
   ngOnInit(): void {
     this.getCountries();
-    this.getRegions();
+    //this.getRegions();
   }
   onSelectCountry() {
     //this.sourceCountry = country;
