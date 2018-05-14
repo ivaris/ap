@@ -41,8 +41,4 @@ export class SearchComponent {
     console.log("country selected :"+this.country);
     this.getRegionsByCountry();
   }
-  onClickSearch(){
-    console.log("search clicked values[Country,Region]=["+this.country.name+","+this.region.name);
-    
-  }
 }

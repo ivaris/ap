@@ -8,7 +8,6 @@ import { Region } from '../domains/region';
   selector: 'search-result',
   templateUrl: '../views/searchresult.view.html',
   styleUrls: ['../styles/searchresult.style.css'],
-  inputs: ['country', 'region'],
   providers: [AirportService]
 
 })
