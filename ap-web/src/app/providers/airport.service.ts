@@ -20,7 +20,7 @@ export class AirportService {
 
   getAirports(country : Country, region: Region): Promise<Airport[]> {
     if(country==null && region==null){
-      return this.getAllAirports();
+      //return this.getAllAirports();
     }
     if(country!=null && region==null){
       return this.http.get("http://localhost:8080/ap-service/api/airport/country/"+country.code)
