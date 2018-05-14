@@ -38,7 +38,6 @@ export class SearchComponent {
     //this.getRegions();
   }
   onSelectCountry() {
-    //this.sourceCountry = country;
     console.log("country selected :"+this.country);
     this.getRegionsByCountry();
   }

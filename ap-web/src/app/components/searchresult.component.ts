@@ -8,13 +8,31 @@ import { Region } from '../domains/region';
   selector: 'search-result',
   templateUrl: '../views/searchresult.view.html',
   styleUrls: ['../styles/searchresult.style.css'],
+  inputs: ['country', 'region'],
   providers: [AirportService]
 
 })
 export class SearchResultComponent {
     airports: Airport[];
-    @Input() country: Country;
-    @Input() region: Region;
-    constructor(private airportService: AirportService) { }
+    country: Country;
+    region: Region;
+    constructor(private airportService: AirportService) { 
+      console.log("SearchResultComponent:"+this.country+":"+this.region);
+      this.country = null;
+      this.region = null;
+    }
+
+    ngOnInit(): void {
+     this.getAirports();
+    }
+
+    getAirports(): void {
+      this.airportService.getAirports(this.country,this.region).then(airports => this.airports = airports);
+    }
+
+    
+
+
+
 
 }
