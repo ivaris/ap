@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Lookup Airports: </h2>
+<ul>
+  <li>
+    <div>
+      <h4>Look up:
+        <select [(ngModel)]="country" (change)="onSelectCountry()">
+          <option *ngFor="let country of countries" [ngValue]="country" >{{country.name}}
+          </option>
+        </select>
+        <select [(ngModel)]="region">
+          <option *ngFor="let region of regions" [ngValue]="region">{{region.name}}
+          </option>
+        </select>
+        <button (click)="onClickSearch('country')">Search</button>
+      </h4>
+    </div>
+  </li>
+</ul>

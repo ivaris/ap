@@ -6,3 +6,5 @@
 /.settings/
 /bin/
 *.iml
+/package-lock.json
+.DS_Store
