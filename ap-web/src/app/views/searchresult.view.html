@@ -1,5 +1,49 @@
-<div >
+<div>
         <h2> Results: for {{country.name}}/{{region.name}}</h2>
-        <div *ngFor="let airport of airports">{{airport.name}}
+        <div>
+                <table border='1'>
+                        <thead>
+                                <tr>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">name</th>
+                                        <th ng-if="$even">ident</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">type</th>
+                                        <th ng-if="$even">latitude</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">longitude</th>
+                                        <th ng-if="$even">elevationFeet</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">continent</th>
+                                        <th ng-if="$even">isoCountry</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">isoRegion</th>
+                                        <th ng-if="$even">municipality</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">scheduledService</th>
+                                        <th ng-if="$even">gpsCode</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">iataCode</th>
+                                        <th ng-if="$even">localCode</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">homeLink</th>
+                                        <th ng-if="$even"> wikipediaLink</th>
+                                        <th ng-if="$odd" style="background-color:#f1f1f1">keywords</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr *ngFor="let airport of airports">
+                                        <td ng-if="$even">{{ airport.name }}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.ident}}</td>
+                                        <td ng-if="$even">{{ airport.type}}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.latitude}}</td>
+                                        <td ng-if="$even">{{ airport.longitude}}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.elevationFeet}}</td>
+                                        <td ng-if="$even">{{ airport.continent}}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.isoCountry }}</td>
+                                        <td ng-if="$even">{{ airport.isoRegion }}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.municipality }}</td>
+                                        <td ng-if="$even">{{ airport.scheduledService }}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.gpsCode }}</td>
+                                        <td ng-if="$even">{{ airport.iataCode }}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.localCode }}</td>
+                                        <td ng-if="$even">{{ airport.homeLink }}</td>
+                                        <td ng-if="$odd" style="background-color:#f1f1f1">{{airport.wikipediaLink }}</td>
+                                        <td ng-if="$even">{{ airport.keywords }}</td>
+                                </tr>
+                        </tbody>
+                </table>
         </div>
 </div>
