@@ -2,6 +2,7 @@ package com.ivar.enterprise.ap.resource;
 
 import com.ivar.enterprise.ap.domain.Country;
 import com.ivar.enterprise.ap.domain.Region;
+import com.ivar.enterprise.ap.service.CustomFilter;
 import com.ivar.enterprise.ap.service.EntityService;
 import com.ivar.enterprise.ap.service.EntityServiceMongoDbImpl;
 
@@ -31,8 +32,8 @@ public class RegionResource<T> extends DefaultResource<T> {
     
     @GET
     @Path("/country/{countrycode}")
-    public Response getAllRegionsByCountryCode(@PathParam("countrycode") String countrycode){
-        return getResponse((T)service.getEntitesByCustomFilter("isoCountry",countrycode));
+    public Response getAllRegionsByCountryCode(@PathParam("countrycode") String countryCode){
+        return getResponse((T)service.getEntitesByCustomFilter(new CustomFilter("isoCountry",countryCode)));
     }
 
 	

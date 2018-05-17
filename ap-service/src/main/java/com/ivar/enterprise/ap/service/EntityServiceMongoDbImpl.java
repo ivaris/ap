@@ -8,81 +8,96 @@ import com.ivar.enterprise.ap.db.MongoDbDriver;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EntityServiceMongoDbImpl<T extends Object> implements EntityService<T> {
 
-    Class<T> _clazz;
-    String entityName;
-    MongoCollection<Document> collection;
+	Class<T> _clazz;
+	String entityName;
+	MongoCollection<Document> collection;
 
-    public EntityServiceMongoDbImpl(Class<T> _clazz, String entityName){
-        this._clazz = _clazz;
-        this.entityName = entityName;
-        collection = MongoDbDriver.getCollection("ap-db", this.entityName);
-    }
-    public List<T> getEntites() {
-        List<T> entities = new ArrayList<T>();
-        MongoCursor<Document> cursor = collection.find().iterator();
-        try {
-            while (cursor.hasNext()) {
-                entities.add(parseObject(cursor.next().toJson()));
-            }
-        }catch (Exception exp){
-            exp.printStackTrace();
-        } finally {
-            cursor.close();
-        }
-        return entities;
-    }
+	public EntityServiceMongoDbImpl(Class<T> _clazz, String entityName) {
+		this._clazz = _clazz;
+		this.entityName = entityName;
+		collection = MongoDbDriver.getCollection("ap-db", this.entityName);
+	}
 
-    public T getEntityById(long id) {
-        FindIterable<Document> findIt = collection.find(Filters.eq("id",id));
-        return parseObject(findIt.first().toJson());
-    }
+	public List<T> getEntites() {
+		List<T> entities = new ArrayList<T>();
+		MongoCursor<Document> cursor = collection.find().iterator();
+		try {
+			while (cursor.hasNext()) {
+				entities.add(parseObject(cursor.next().toJson()));
+			}
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		} finally {
+			cursor.close();
+		}
+		return entities;
+	}
 
+	public T getEntityById(long id) {
+		FindIterable<Document> findIt = collection.find(Filters.eq("id", id));
+		return parseObject(findIt.first().toJson());
+	}
 
-    public T getEntityByCode(String code) {
-        FindIterable<Document> findIt =  collection.find(Filters.eq("code",code));
-        return parseObject(findIt.first().toJson());
-    }
+	public T getEntityByCode(String code) {
+		FindIterable<Document> findIt = collection.find(Filters.eq("code", code));
+		return parseObject(findIt.first().toJson());
+	}
 
-    public T getEntityByName(String name) {
-        FindIterable<Document> findIt =  collection.find(Filters.eq("name",name));
-        return parseObject(findIt.first().toJson());
-    }
+	public T getEntityByName(String name) {
+		FindIterable<Document> findIt = collection.find(Filters.eq("name", name));
+		return parseObject(findIt.first().toJson());
+	}
 
-    public T parseObject(String json){
-        try {
-            JsonParser jsonParser = new JsonFactory().createParser(json);
-            ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
-            T entity = mapper.readValue(jsonParser, this._clazz);
-            return entity;
-        }catch (IOException ioExp){
-            ioExp.printStackTrace();
-        }
-        return null;
-    }
+	public T parseObject(String json) {
+		try {
+			JsonParser jsonParser = new JsonFactory().createParser(json);
+			ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+					false);
+			;
+			T entity = mapper.readValue(jsonParser, this._clazz);
+			return entity;
+		} catch (IOException ioExp) {
+			ioExp.printStackTrace();
+		}
+		return null;
+	}
 
 	@Override
-	public List<T> getEntitesByCustomFilter(String key, Object value) {
-		 List<T> entities = new ArrayList<T>();
-	        MongoCursor<Document> cursor = collection.find(Filters.eq(key, value)).iterator();
-	        try {
-	            while (cursor.hasNext()) {
-	                entities.add(parseObject(cursor.next().toJson()));
-	            }
-	        }catch (Exception exp){
-	            exp.printStackTrace();
-	        } finally {
-	            cursor.close();
-	        }
-	        return entities;
+	public List<T> getEntitesByCustomFilter(CustomFilter filter) {
+
+		return getEntitesByCustomFilters(Arrays.asList(filter));
+	}
+
+	@Override
+	public List<T> getEntitesByCustomFilters(List<CustomFilter> filters) {
+		List<T> entities = new ArrayList<T>();
+		List<Bson> aggregates = new ArrayList<>();
+		for (CustomFilter filter : filters) {
+			aggregates.add(Aggregates.match(Filters.eq(filter.getKey(), filter.getValue())));
+		}
+
+		MongoCursor<Document> cursor = collection.aggregate(aggregates).iterator();
+		try {
+			while (cursor.hasNext()) {
+				entities.add(parseObject(cursor.next().toJson()));
+			}
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		} finally {
+			cursor.close();
+		}
+		return entities;
 	}
 }
