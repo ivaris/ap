@@ -51,7 +51,11 @@ public class EntityServiceMongoDbImpl<T extends Object> implements EntityService
 	}
 
 	public T getEntityByCode(String code) {
-		FindIterable<Document> findIt = collection.find(Filters.eq("code", code));
+		return getEntityByCode(code, "code");
+	}
+	
+	public T getEntityByCode(String code, String modelCode) {
+		FindIterable<Document> findIt = collection.find(Filters.eq(modelCode, code));
 		return parseObject(findIt.first().toJson());
 	}
 

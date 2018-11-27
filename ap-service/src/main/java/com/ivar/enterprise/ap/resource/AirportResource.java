@@ -48,7 +48,7 @@ public class AirportResource<T> extends DefaultResource<T> {
     @GET
     @Path("/code/{code}")
     public Response getAirportByCode(@PathParam("code") String code){
-        return getResponse((T)service.getEntityByCode(code));
+        return getResponse((T)service.getEntityByCode(code,"iataCode"));
     }
 
     @GET

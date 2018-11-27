@@ -10,5 +10,6 @@ public interface EntityService<T extends Object>  {
     List<T> getEntitesByCustomFilters(List<CustomFilter> filters);
     T getEntityById(long id);
     T getEntityByCode(String code);
+    T getEntityByCode(String code, String modelCode);
     T getEntityByName(String name);
 }
